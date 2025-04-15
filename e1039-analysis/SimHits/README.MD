@@ -1,51 +1,15 @@
 # SimHits
-Collection of code to run e1039-simulation, where 
-- `src` is the directory that controls information to be saved in the output root file
-- `macro` is the directory that contains some config files that specify the geometry setup and reconstruction steps
-
+This is the SimHits version tailored for geometry change studies
 ## Getting started
 
-### Downloading code
-```
-git clone git@github.com:DarkQuest-FNAL/DarkQuest.git
-cd DarkQuest/e1039-analysis/SimHits/
-```
+SimHits depends on [e1039-core](https://github.com/Xinlong12580/e1039-core/tree/testori_muon_gun) for displaced tracking and [e1039-core]( https://github.com/Xinlong12580/e1039-core/tree/SpinQuest_upgrade_sagitta) for standard tracking.
 
-SimHits depends on [e1039-core](https://github.com/E1039-Collaboration/e1039-core), and we have our customized version [here](https://github.com/DarkQuest-FNAL/e1039-core). You will want to install e1039-core privately (or call the already installed official simulation).
 
-### Installing e1039-core 
-
-Private installation in the spinquest machine (needed for the displaced tracking)
-```bash
-cd /path/to/where/you/want/to/install
-# clone repo
-git clone git@github.com:DarkQuest-FNAL/e1039-core.git
-# build and install
-cd e1039-core
-./script/setup-install.sh auto
-source ../core-inst/this-e1039.sh
-./build.sh
-```
-
-### Setting up e1039-core
-If you have the private version of e1039 installed, change the `MY_E1039` in `setup_mye1039.sh` to your directory. 
-
-By default it calls Yongbin's installation in `/seaquest/users/yfeng/cleanv3/core-inst/this-e1039.sh`.
-
-Then source the script:
-```
-cd DarkQuest/e1039-analysis/SimHits/
-source setup_mye1039.sh
-```
-The source command has to be done **everytime you log in**.
-
-### Compiling SimAna
 To compile the analysis code under `SimAna` (after `setup_mye1039.sh`):
 ```
 mkdir work
-mkdir install
 cd work
-cmake ../src/ -DCMAKE_INSTALL_PREFIX=../install
+cmake ../src/ 
 make clean
 make
 make install
